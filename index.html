@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage with Navbar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const parentItems = document.querySelectorAll('nav ul li > a');
+
+        parentItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const parent = e.target.parentElement;
+                if (parent.classList.contains('open')) {
+                    parent.classList.remove('open');
+                } else {
+                    parent.classList.add('open');
+                }
+            });
+        });
+
+        const consultingLink = document.querySelector('nav ul li ul li a[href="#"]:nth-child(1)');
+        consultingLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const mainContent = document.querySelector('main');
+            mainContent.innerHTML = `
+                <div class="thumbnail">
+                    <img src="https://via.placeholder.com/150" alt="Thumbnail 1">
+                    <p>Description for Image 1</p>
+                </div>
+                <div class="thumbnail">
+                    <img src="https://via.placeholder.com/150" alt="Thumbnail 2">
+                    <p>Description for Image 2</p>
+                </div>
+            `;
+        });
+    });
+</script>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Addition</a>
+                <ul>
+                    <li><a href="#">Single Digit Addition with numbers</a></li>
+                    <li><a href="#">Addition with Objects</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Subtraction</a>
+                <ul>
+                    <li><a href="#">Single Digit subtraction with numbers</a></li>
+                    <li><a href="#">Subtraction with objects</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Number Sense</a>
+                <ul>
+                    <li><a href="#">Count Forward to complete the sequence</a></li>
+                    <li><a href="#">Count Backward to complete the sequence</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Welcome to Our Website</h1>
+        <p>This is the main content area.</p>
+    </main>
+</body>
+</html>
